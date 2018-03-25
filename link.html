@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Hackathon Link Generator</title>
+	
+	<style>
+	
+	</style>
+  </head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="assets/rs.css">
+
+<body style="background-color:#f6f6f6;">
+
+<div class="w3-container" align="center">
+<div id="header"></div>
+
+
+<br>
+  <img src="assets/rslogo.png"  alt="Hackathon" style="width:213px;height:194px;">     
+</div>
+
+  <body>
+  <div class="w3-row-padding">
+  <div><br> </div>
+
+<div class="w3-half" align="right">
+  User Name<br><br>
+  Sum Assured<br><br>
+  Modal Premium<br><br><br>
+  Mode of Payement<br><br>
+</div>
+
+<div class="w3-half">
+<Input type="text" size = "30" value="vishi" id="UserNameTB" placeholder="Any Name" /><br><br>
+<Input type="text" size = "30" value="100000" id="TermTB" placeholder="Number range from 1-99 crores" /><br><br>
+<Input type="text" size = "30" value="2400" id="PremiumTB" placeholder="number range from 1-99 crores" /><br><br>
+<input type="radio" name="paymode" value="quaterly"><label for="Quarterly"> Quarterly</label>&nbsp
+<input type="radio" name="paymode" value="semi"><label for="Semi-Annual"> Semi-Annual</label>&nbsp
+<input type="radio" name="paymode" value="annual"><label for="Annual"> Annual</label><br><br>
+   <a id="mobileurl" target="_blank"> link </a><br><br>
+  <!-- <a id="relativeurl" target="_blank"> link </a><br><br>  -->
+   <Input type="button" value = "Generate Links" onclick="GenerateUrl('index')" /><br><br><br><br>
+</div>
+
+</div>
+
+    <script type="text/javascript">
+	function GenerateUrl(fname, no)
+	{
+	console.log();
+
+		var pname = document.getElementById('UserNameTB');
+		if(!pname.value) pname.value = "Vishi";
+		var lsa = document.getElementById('TermTB').value || "100000";
+		var pmprem = document.getElementById('PremiumTB').value || "2500";
+		var PMODE = $("input[name='paymode']:checked").val();
+		//var planradioVal = $("input[name='chooseone']:checked").val();
+	//	var mobileurl = "../" + fname + ".html?PNAME="+ pname.value + "&LSA=" + lsa + "&PMPREM=" + pmprem+"&PMODE="+PMODE+"&RIDER1="+$('#rider1').prop('checked')+"&RIDER2="+$('#rider2').prop('checked')+"&RIDER3="+$('#rider3').prop('checked')+"&RIDER4="+$('#rider4').prop('checked')+"&RIDER5="+$('#rider5').prop('checked')+"&PRODUCTNAME="+planradioVal+"&PTERM=5";
+	
+	var mobileurl = "../" + fname + ".html?PNAME="+ pname.value + "&LSA=" + lsa + "&PMPREM=" + pmprem+"&PMODE="+PMODE+"&PRODUCTNAME=elite&PTERM=5";
+		<!-- var l = document.getElementById('relativeurl');  -->
+		<!-- l.innerText = mobileurl.replace("../",""); -->
+		<!-- l.href = mobileurl.replace("../",""); -->
+		var a = document.getElementById('mobileurl'); 
+		a.innerText = mobileurl.replace("../","");
+		a.href = mobileurl.replace("../","");
+		  $.ajax({
+			  url:'shorten.php?url=' +  encodeURIComponent(mobileurl.replace("..","https://anoorcloud.com/hack")),
+			  complete: function (response) {
+				  a.innerText = response.responseText;
+				  a.href = response.responseText;
+			  }
+		  });
+	}
+  </script>  
+  </body>
+  <div id="footer"></div>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+	<meta charset="UTF-8" />
+    <title>AXA KFD</title>
+	<script src="js/jquery.min.js"></script>
+	<style type="text/css">
+	@font-face {
+		font-family: "My Custom Font";
+		src: url(KrutiDev.ttf) format("truetype");
+	}
+	p.customfont { 
+		font-family: "My Custom Font", Verdana, Tahoma;
+	}
+	</style>	
+	<script type="text/javascript" src="js/gameutil.js"></script>		
+	<script> 
+		var pname_url,pname,pno,plan,productname,lsa,pmprem,pmode,pterm,rider1;
+		pname = getParameterByName("PNAME") || 'Sundar';
+		productname = getParameterByName("PRODUCTNAME")  || "ismart"; // elite, easy, ismart
+		lsa = getParameterByName("LSA") || 123456;
+		pmprem = getParameterByName("PMPREM") || 1234;
+		pmode = getParameterByName("PMODE") || 'annual';
+		pterm = getParameterByName("PTERM") || '5';
+		rider1 = getParameterByName("RIDER1") || true;
+	</script>
+	<script type="text/javascript" src="js/anoor.video.engine.js"></script>
+</head>
+<body>
+<script>
+
+</script>
+<script>
+
+	$(document).ready(function(){
+		$.getScript( "js/" + GetFriendlyPlanName(window.productname) + ".js",  function(){} );
+		$.getScript( "js/assets.js",  function(){});
+		$.getScript( "js/audio.js",   function(){});
+		$.getScript( "js/game.js",    function(){});
+	});
+
+</script>
+<br>
+</body>
+</html>
